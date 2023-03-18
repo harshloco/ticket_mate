@@ -15,7 +15,7 @@ export default () => {
     };
     return (
     <div>
-<form onSubmit={onSubmit}>
+<form onSubmit={onSubmit} className="row g-3">
     <div className="form-group">
         <label>Title</label>
         <input 
@@ -24,7 +24,10 @@ export default () => {
         className="form-control"
         />
     </div>
+    <div className="col-auto">
     <button className="btn btn-primary">Submit</button>
+    </div>
+   
 </form>
     </div>
     );
