@@ -24,11 +24,25 @@ app.post('/events', (req,res) => {
     }
 
     if(type === 'CommentCreated') {
-        const { id, content, postId } = data;
+        const { id, content, postId , status} = data;
 
         const post = posts[postId];
        
-        post.comments.push({id,content})
+        post.comments.push({id,content, status})
+    }
+    console.log( 'line 33 query service '+type  );
+    console.log( 'line 33 query service '+JSON.stringify(data)  );
+    if (type === 'CommentUpdated') {
+        const { id, content, postId, status }= data;
+console.log('commentupdates line 36 query service '+data );
+        const post = posts[postId];
+        const comment = post.comments.find(comment => {
+            return comment.id === id;
+        })
+
+        comment.status = status;
+        comment.content = content;
+
     }
     res.send({});
 });
